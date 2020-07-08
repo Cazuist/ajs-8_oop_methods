@@ -82,35 +82,30 @@ describe('Начинаем тестирование класса Character', () 
   });
 
   describe('Тестируем методы класса', () => {
-        
-
     test('Должен увеличить уровень и здоровье, если health > 0', () => {
       const char1 = new Character('test', 'Bowman');
 
       char1.health = 50;
-      const origin_level = char1.level;
+      const origLvl = char1.level;
 
       char1.levelUp();
 
-      const new_level = char1.level;
-      const new_health = char1.health;
+      const newLvl = char1.level;
+      const newHealth = char1.health;
 
-      expect([new_level, new_health]).toEqual([origin_level + 1, 100]);
+      expect([newLvl, newHealth]).toEqual([origLvl + 1, 100]);
     });
 
     test('Должен сохранить уровень и здоровье, если health <= 0', () => {
       const char2 = new Character('test', 'Bowman');
       char2.health = 0;
 
-      const origin_health = 0;
-      const original_level = char2.level;
-
       char2.levelUp();
 
-      const new_level = char2.level;
-      const new_health = char2.health;
+      const newLvl = char2.level;
+      const newHealth = char2.health;
 
-      expect([new_level, new_health]).toEqual([1, 0]);
+      expect([newLvl, newHealth]).toEqual([1, 0]);
     });
 
     test('Должен уменьшить здоровье, если health > 0', () => {
@@ -122,21 +117,21 @@ describe('Начинаем тестирование класса Character', () 
 
       char3.damage(points);
 
-      const new_health = char3.health;
+      const newHealth = char3.health;
 
-      expect(new_health).toBe(50 - damage);
+      expect(newHealth).toBe(50 - damage);
     });
 
     test('Должен сохранить здоровье, если health = 0', () => {
       const char4 = new Character('test', 'Bowman');
       char4.health = 0;
 
-      const points = 15;      
+      const points = 15;
       char4.damage(points);
 
-      const new_health = char4.health;
+      const newHealth = char4.health;
 
-      expect(new_health).toBe(0);
+      expect(newHealth).toBe(0);
     });
   });
 });
